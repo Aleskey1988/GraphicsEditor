@@ -1,26 +1,56 @@
 #include "GraphicsEditor.h"
 
-GraphicsEditor::GraphicsEditor(QWidget *parent)
+GraphicsEditor::GraphicsEditor(QWidget* parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 
-	connect(ui.buttonDraw, &QPushButton::clicked, this, &GraphicsEditor::onDraw);
+	canvas = QImage(640, 480, QImage::Format_ARGB32);
+	canvas.fill(Qt::white);
+	ui.canvas->setPixmap(QPixmap::fromImage(canvas));
 }
 
-void GraphicsEditor::onDraw()
+void GraphicsEditor::mousePressEvent(QMouseEvent* event)
 {
-	QImage image(320, 240, QImage::Format_ARGB32);
-	image.fill(Qt::white);
-	QPainter p(&image);
-	QPen pen(Qt::blue, 5, Qt::PenStyle::DashLine, Qt::PenCapStyle::RoundCap);
-	p.setPen(pen);
-	p.drawLine(160, 10, 240, 100);
-	pen = QPen(Qt::red, 10, Qt::PenStyle::DotLine, Qt::PenCapStyle::SquareCap);
-	p.setPen(pen);
-	p.drawLine(240, 100, 80, 100);
-	pen = QPen(Qt::green, 7.5, Qt::PenStyle::DashDotLine, Qt::PenCapStyle::FlatCap);
-	p.setPen(pen);
-	p.drawLine(80, 100, 160, 10);
-	ui.label->setPixmap(QPixmap::fromImage(image));
+	QPoint pos = event->pos();
+	prevPos = pos;
+	if (ui.buttonPencil->isChecked())
+	{
+		QPainter painter(&canvas);
+		painter.drawPoint(pos);
+		ui.canvas->setPixmap(QPixmap::fromImage(canvas));
+	}
+	else if (ui.buttonLine->isChecked() || ui.buttonRect->isChecked())
+	{
+		canvasCopy = canvas;
+	}
+}
+void GraphicsEditor::mouseMoveEvent(QMouseEvent* event)
+{
+	QPoint pos = event->pos();
+	if (ui.buttonPencil->isChecked())
+	{
+		QPainter painter(&canvas);
+		painter.drawLine(pos, prevPos);
+		prevPos = pos;
+		ui.canvas->setPixmap(QPixmap::fromImage(canvas));
+	}
+	else if (ui.buttonLine->isChecked())
+	{
+		canvas = canvasCopy;
+		QPainter painter(&canvas);
+		painter.drawLine(pos, prevPos);
+		ui.canvas->setPixmap(QPixmap::fromImage(canvas));
+	}
+	else if (ui.buttonRect->isChecked())
+	{
+		canvas = canvasCopy;
+		QPainter painter(&canvas);
+		painter.drawRect(QRect(pos, prevPos));
+		ui.canvas->setPixmap(QPixmap::fromImage(canvas));
+	}
+}
+void GraphicsEditor::mouseReleaseEvent(QMouseEvent* event)
+{
+
 }

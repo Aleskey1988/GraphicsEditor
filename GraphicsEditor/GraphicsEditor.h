@@ -10,8 +10,15 @@ class GraphicsEditor : public QMainWindow
 public:
 	GraphicsEditor(QWidget *parent = Q_NULLPTR);
 
+protected:
+	virtual void mousePressEvent(QMouseEvent* event);
+	virtual void mouseMoveEvent(QMouseEvent* event);
+	virtual void mouseReleaseEvent(QMouseEvent* event);
+
 private:
 	Ui::GraphicsEditorClass ui;
 
-	void onDraw();
+	QImage canvas;
+	QImage canvasCopy;
+	QPoint prevPos;
 };
