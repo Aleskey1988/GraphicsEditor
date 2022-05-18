@@ -1,9 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="GraphicsEditor.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="ColorLabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Canvas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -11,8 +18,13 @@
     <ResourceCompile Include="GraphicsEditor.rc" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="GraphicsEditor.h" />
     <QtMoc Include="ColorLabel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="GraphicsEditor.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Canvas.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -20,8 +32,13 @@
     <QtRcc Include="GraphicsEditor.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="GraphicsEditor.ui" />
     <QtUic Include="ColorLabel.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="GraphicsEditor.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Canvas.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -41,5 +58,10 @@
       <Extensions>ui</Extensions>
       <ParseFiles>true</ParseFiles>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

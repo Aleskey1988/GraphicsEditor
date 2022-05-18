@@ -14,7 +14,7 @@
    <string>GraphicsEditor</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="canvas">
+   <widget class="Canvas" name="canvas">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -74,7 +74,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="buttonRect">
+      <widget class="QRadioButton" name="buttonRectangle">
        <property name="text">
         <string>Rectangle</string>
        </property>
@@ -329,6 +329,11 @@
    <class>ColorLabel</class>
    <extends>QLabel</extends>
    <header>colorlabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Canvas</class>
+   <extends>QLabel</extends>
+   <header>canvas.h</header>
   </customwidget>
  </customwidgets>
  <resources>
