@@ -13,10 +13,11 @@ public:
     Canvas(QWidget *parent = Q_NULLPTR);
     ~Canvas();
 
-	void SetBaseColor(QColor color) { baseColor = color; }
-	void SetBackgroundColor(QColor color) { backgroundColor = color; }
+	void SetBaseColor(QColor color);
+	void SetBackgroundColor(QColor color);
 
 	void SetTool(Tool tool) { this->tool = tool; }
+	void SetBrushShape(QPixmap pixmap);
 
 signals:
 	void colorSelected(QColor color, Qt::MouseButton button);
@@ -43,6 +44,8 @@ private:
 	Qt::MouseButton currentButton;
 	QTimer airbrushTimer;
 	QPoint airbrushPos;
+	QPixmap brushShapeBase;
+	QPixmap brushShapeBackground;
 
 	QColor baseColor = Qt::black;
 	QColor backgroundColor = Qt::white;

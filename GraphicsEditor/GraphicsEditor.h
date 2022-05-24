@@ -4,6 +4,7 @@
 #include "ui_GraphicsEditor.h"
 #include "Common.h"
 #include "ColorLabel.h"
+#include "BrushPattern.h"
 
 class GraphicsEditor : public QMainWindow
 {
@@ -14,6 +15,7 @@ public:
 
 private:
 	void fillColors();
+	void fillBrushPatterns();
 
 	void onPencilClicked();
 	void onBrushClicked();
@@ -27,10 +29,13 @@ private:
 	void onAirbrushClicked();
 
 	void onColorSelected(QColor color, Qt::MouseButton button);
+	void onBrushPatternSelected(QPixmap pixmap);
 
 	Ui::GraphicsEditorClass ui;
 
 	QColor baseColor = Qt::black;
 	QColor backgroundColor = Qt::white;
 	Tool tool;
+
+	QList<BrushPattern*> brushPatterns;
 };

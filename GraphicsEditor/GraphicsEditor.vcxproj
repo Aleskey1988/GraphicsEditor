@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BrushPattern.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="ColorLabel.cpp" />
     <ClCompile Include="GraphicsEditor.cpp" />
@@ -89,6 +90,7 @@
     <QtMoc Include="GraphicsEditor.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="BrushPattern.ui" />
     <QtUic Include="Canvas.ui" />
     <QtUic Include="ColorLabel.ui" />
     <QtUic Include="GraphicsEditor.ui" />
@@ -106,6 +108,7 @@
     <QtMoc Include="Canvas.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="BrushPattern.h" />
     <ClInclude Include="Common.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

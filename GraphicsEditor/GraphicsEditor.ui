@@ -316,12 +316,37 @@
      </item>
     </layout>
    </widget>
+   <widget class="QGroupBox" name="groupBrushPatterns">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>220</y>
+      <width>91</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Brush patterns</string>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>71</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="layoutBrushPatterns"/>
+    </widget>
+   </widget>
    <zorder>label</zorder>
    <zorder>labelBackgroundColor</zorder>
    <zorder>canvas</zorder>
    <zorder>gridLayoutWidget</zorder>
    <zorder>labelBaseColor</zorder>
    <zorder>groupTools</zorder>
+   <zorder>groupBrushPatterns</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

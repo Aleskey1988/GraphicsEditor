@@ -15,6 +15,32 @@ Canvas::~Canvas()
 {
 }
 
+void Canvas::SetBaseColor(QColor color)
+{
+	baseColor = color;
+	// colorize pixmap for drawing
+	QPixmap drawingPixmap(brushShapeBase.size());
+	drawingPixmap.fill(color);
+	drawingPixmap.setMask(brushShapeBase.createMaskFromColor(Qt::transparent));
+	brushShapeBase = drawingPixmap;
+}
+void Canvas::SetBackgroundColor(QColor color)
+{
+	backgroundColor = color;
+	// colorize pixmap for drawing
+	QPixmap drawingPixmap(brushShapeBackground.size());
+	drawingPixmap.fill(color);
+	drawingPixmap.setMask(brushShapeBackground.createMaskFromColor(Qt::transparent));
+	brushShapeBackground = drawingPixmap;
+}
+void Canvas::SetBrushShape(QPixmap pixmap)
+{
+	brushShapeBase = pixmap;
+	brushShapeBackground = pixmap;
+	SetBaseColor(baseColor);
+	SetBackgroundColor(backgroundColor);
+}
+
 void Canvas::mousePressEvent(QMouseEvent* event)
 {
 	QPoint pos = event->pos();
@@ -165,15 +191,14 @@ void Canvas::erase(QPoint pos)
 }
 void Canvas::drawBrush(QPoint pos, Qt::MouseButtons buttons)
 {
-	QColor color;
+	QPixmap brushShape;
 	if (buttons == Qt::LeftButton)
-		color = baseColor;
+		brushShape = brushShapeBase;
 	else if (buttons == Qt::RightButton)
-		color = backgroundColor;
-	QPixmap shape = getBrushShape(color);
+		brushShape = brushShapeBackground;
 	QPainter painter(&canvas);
 	QPoint centerPos(pos.x() - brushSize.width() / 2, pos.y() - brushSize.height() / 2);
-	painter.drawPixmap(centerPos, shape);
+	painter.drawPixmap(centerPos, brushShape);
 }
 void Canvas::drawAirbrush()
 {
