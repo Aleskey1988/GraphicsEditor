@@ -5,6 +5,7 @@
 #include "Common.h"
 #include "ColorLabel.h"
 #include "BrushPattern.h"
+#include "UndoRedoManager.h"
 
 class GraphicsEditor : public QMainWindow
 {
@@ -30,6 +31,8 @@ private:
 
 	void onColorSelected(QColor color, Qt::MouseButton button);
 	void onBrushPatternSelected(QPixmap pixmap);
+	void onCanvasChanged(QPixmap pixmap);
+	void onUndoRedo(QPixmap pixmap, bool undo, bool redo);
 
 	Ui::GraphicsEditorClass ui;
 
@@ -38,4 +41,6 @@ private:
 	Tool tool;
 
 	QList<BrushPattern*> brushPatterns;
+
+	UndoRedoManager urManager;
 };

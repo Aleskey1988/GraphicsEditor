@@ -2,6 +2,7 @@
 
 #include <QtWidgets>
 
+static QSize canvasSize = QSize(640, 480);
 static QSize eraserSize = QSize(25, 25);
 static QSize brushSize = QSize(11, 11);
 static QSize airbrushSize = QSize(31, 31);

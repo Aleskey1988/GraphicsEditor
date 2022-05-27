@@ -16,6 +16,9 @@
     <ClCompile Include="BrushPattern.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UndoRedoManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GraphicsEditor.rc" />
@@ -31,6 +34,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="BrushPattern.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="UndoRedoManager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

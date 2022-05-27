@@ -7,7 +7,7 @@ Canvas::Canvas(QWidget *parent)
 
 	connect(&airbrushTimer, &QTimer::timeout, this, &Canvas::drawAirbrush);
 
-	canvas = QImage(640, 480, QImage::Format_ARGB32);
+	canvas = QImage(canvasSize, QImage::Format_ARGB32);
 	canvas.fill(Qt::white);
 	updateCanvas();
 }
@@ -32,6 +32,11 @@ void Canvas::SetBackgroundColor(QColor color)
 	drawingPixmap.fill(color);
 	drawingPixmap.setMask(brushShapeBackground.createMaskFromColor(Qt::transparent));
 	brushShapeBackground = drawingPixmap;
+}
+void Canvas::SetPixmap(QPixmap pixmap)
+{
+	canvas = pixmap.toImage();
+	updateCanvas();
 }
 void Canvas::SetBrushShape(QPixmap pixmap)
 {
@@ -142,6 +147,10 @@ void Canvas::mouseReleaseEvent(QMouseEvent* event)
 	if (tool == Tool::Airbrush)
 	{
 		airbrushTimer.stop();
+	}
+	if (tool != Tool::ColorPicker)
+	{
+		emit canvasChanged(QPixmap::fromImage(canvas));
 	}
 }
 

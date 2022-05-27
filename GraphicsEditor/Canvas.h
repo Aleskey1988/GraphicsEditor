@@ -16,11 +16,13 @@ public:
 	void SetBaseColor(QColor color);
 	void SetBackgroundColor(QColor color);
 
+	void SetPixmap(QPixmap pixmap);
 	void SetTool(Tool tool) { this->tool = tool; }
 	void SetBrushShape(QPixmap pixmap);
 
 signals:
 	void colorSelected(QColor color, Qt::MouseButton button);
+	void canvasChanged(QPixmap pixmap);
 
 protected:
 	virtual void mousePressEvent(QMouseEvent* event);
